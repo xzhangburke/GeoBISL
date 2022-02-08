@@ -1,0 +1,422 @@
+html, body, #map {
+	height: 100%;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+}
+
+#search {
+	display: block;
+	position: absolute;
+	top: 95px;
+	left: 20px;
+	z-index: 50;
+}
+
+#HomeButton {
+	display: block;
+	position: absolute;
+	top: 20px;
+	left: 75px;
+	z-index: 50;
+}
+
+#loading_map {
+	display: block;
+	position: absolute;
+	bottom: 100px;
+	left: 50px;
+	z-index: 50;
+}
+
+.bookmark-container {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	padding: 1rem;
+	width: 250px;
+	height: 300px;
+	background: #ffffff;
+	border-radius: 0px;
+	border: 0px solid #eeeeee;
+}
+
+#legendButton {
+  position: absolute;
+  top: 90px;
+  left: 20px;
+  z-index: 100;
+}
+#legendPanel {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  z-index: 100;
+  border: solid #97DCF2 2px;
+}
+
+#leftPane {
+	width: 25%;
+	min-width: 250px;
+}
+
+#legendPane {
+	border: solid #97DCF2 0px;
+}
+#legendDiv2 {
+	border: solid #D3D3D3 1px;
+}
+
+#gravesite {
+	height: 100%;
+}
+
+.center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+}
+
+.legendIcon {
+	background-image: url("./img/legend_32x32.png");
+	width: 32px;
+	height: 32px;
+}
+
+.measurementIcon {
+	background-image: url("./img/measurement_32x32.png");
+	width: 32px;
+	height: 32px;
+}
+
+.layerIcon {
+	background-image: url("./img/Layers_32x32.png");
+	width: 32px;
+	height: 32px;
+}
+
+.basemapIcon {
+	background-image: url("./img/basemap_32x32.png");
+	width: 32px;
+	height: 32px;
+}
+
+.bookmarkIcon {
+	background-image: url("./img/bookmark_32x32.png");
+	width: 32px;
+	height: 32px;
+}
+
+.summaryReportIcon {
+	background-image: url("./img/Reports-icon_32x32.png");
+	width: 32px;
+	height: 32px;
+}
+
+.gravesiteReportIcon {
+	background-image: url("./img/report_2_32x32.png");
+	width: 32px;
+	height: 32px;
+}
+
+.schedulerIcon {
+	background-image: url("./img/menu.png");
+	width: 32px;
+	height: 32px;
+}
+
+.mapbookReportIcon {
+	background-image: url("./img/mapbook.png");
+	width: 32px;
+	height: 32px;
+}
+
+.editIcon {
+	background-image: url("./img/edit_32x32.png");
+	width: 32px;
+	height: 32px;
+}
+
+.helpIcon {
+	background-image: url("./img/help_32x32.png");
+	width: 32px;
+	height: 32px;
+}
+
+.homeIcon {
+	background-image: url("./img/home_25x25.png");
+	width: 25px;
+	height: 23px;
+}
+.previousIcon {
+	background-image: url("./img/arrow_left_25x25.png");
+	width: 25px;
+	height: 23px;
+}
+.nextIcon {
+	background-image: url("./img/arrow_right_25x25.png");
+	width: 25px;
+	height: 23px;
+}
+
+
+ul li {list-style: none; cursor: pointer;}
+li.smart_autocomplete_highlight {background-color: #C1CE84;}
+ul { margin: 10px 0; padding: 5px; background-color: #E3EBBC; }
+
+iframe {
+	margin: 5px;
+	width: 95%;
+	height: 85%;
+	
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+
+	overflow: auto;
+	white-space: nowrap;
+}		
+
+#legendDiv {
+	margin: 0px;
+	width: 300px;;
+	height: 400px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+
+	overflow: auto;
+	white-space: nowrap;
+}		
+
+#layerListDiv {
+	margin: 0px;
+	width: 300px;;
+	height: 400px
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+
+	overflow: auto;
+	white-space: nowrap;
+}		
+
+#basemapGalleryDiv {
+	margin: 0px;
+	width: 300px;;
+	height: 400px;;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+
+	overflow: auto;
+	white-space: nowrap;
+}		
+
+#bookmarkDiv {
+	margin: 0px;
+	width: 300px;;
+	height: 200px;;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+
+	overflow: auto;
+	white-space: nowrap;
+}		
+
+#measurementDiv {
+	margin: 0px;
+	width: 300px;;
+	height: 200px;;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+
+	overflow: auto;
+	white-space: nowrap;
+}		
+
+#summaryReportDiv {
+	margin: 0px;
+	width: 380px;;
+	height: 170px;;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+
+	overflow: hidden;
+}		
+
+#summaryReportResultDiv {
+	margin: 0px;
+	width: 600px;;
+	height: 500px;;
+	
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+
+	overflow: hidden;
+}	
+
+#identifyResultDiv {
+	margin: 0px;
+	width: 400px;;
+	height: 500px;;
+	
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+
+	overflow: hidden;
+}	
+
+
+
+#gravesiteReportDiv {
+	margin: 0px;
+	width: 420px;;
+	height: 200px;;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+
+	overflow: auto;
+	white-space: nowrap;
+}		
+
+#mapbookReportDiv {
+	margin: 0px;
+	width: 420px;;
+	height: 250px;;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+
+	-moz-box-shadow: 1px 1px 3px #000;
+	-webkit-box-shadow: 1px 1px 3px #000;
+	box-shadow: 1px 1px 3px #000;
+
+	overflow: auto;
+	white-space: nowrap;
+}		
+
+
+table th,
+table td{
+  text-align: left;
+}
+table.layout{
+  width: 100%;
+  border-collapse: collapse;
+}
+table.display{
+  margin: 0em 0;
+}
+table.display th,
+table.display td{
+  border: 1px solid #B3BFAA;
+  padding: .1em .1em;
+}
+
+table.display th{ background: #D5E0CC; }
+table.display td{ background: #fff; }
+
+table.responsive-table{
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 30em){
+    table.responsive-table{
+      box-shadow: none;  
+    }
+    table.responsive-table thead{
+      display: none; 
+    }
+  table.display th,
+  table.display td{
+    padding: .5em;
+  }
+    
+  table.responsive-table td:nth-child(1):before{
+    content: 'Number';
+  }
+  table.responsive-table td:nth-child(2):before{
+    content: 'Name';
+  }
+  table.responsive-table td:nth-child(1),
+  table.responsive-table td:nth-child(2){
+    padding-left: 25%;
+  }
+  table.responsive-table td:nth-child(1):before,
+  table.responsive-table td:nth-child(2):before{
+    position: absolute;
+    left: .1em;
+    font-weight: bold;
+  }
+  
+    table.responsive-table tr,
+    table.responsive-table td{
+        display: block;
+    }
+    table.responsive-table tr{
+        position: relative;
+        margin-bottom: 1em;
+    }
+    table.responsive-table td{
+        border-top: none;
+    }
+    table.responsive-table td.organisationnumber{
+        background: #D5E0CC;
+        border-top: 1px solid #B3BFAA;
+    }
+    table.responsive-table td.actions{
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: none;
+        background: none;
+    }
+}

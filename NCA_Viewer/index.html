@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>  
+<head> 
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+  
+	<title>NCA Data Viewer</title>
+	<link rel="stylesheet" href="https://js.arcgis.com/3.23/dijit/themes/claro/claro.css">    
+	<link rel="stylesheet" href="https://js.arcgis.com/3.23/esri/css/esri.css">
+	<link rel="stylesheet" href="css/nca.css">
+
+	<style>
+		html, body, #map {
+			height: 100%;
+			margin: 0;
+			overflow: hidden;
+			padding: 0;
+		}
+	
+		#titlePane{
+			width:280px;
+		}
+	</style>
+	
+	<script type="text/javascript" src="https://js.arcgis.com/3.23/"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="script/jquery.smart_autocomplete.js"></script>
+	<script type="text/javascript" src="script/qs_score.js"></script>
+  	<script type="text/javascript" src="script/custom.js"></script>	
+  	<script type="text/javascript" src="script/custom_page.js"></script>	
+
+
+</head>
+
+<body class="claro">
+	<div id="content" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'headline', gutters:true" style="width: 100%; height: 100%; margin: 0;">
+		<div id="topPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top'" style="background-color: #003366;height: 90px;overflow:hidden;" >
+			<div id="contentHeader" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'headline', gutters:false" style="width: 100%; ; margin: 0;">
+				<div id="leftPane1" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'left'" style="margin-top: -18px;margin-left: -18px;width: 399px;height: 110px;overflow: hidden;">
+					<img src="img/logo.png" />
+				</div>
+				<div id="rightPane1" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'right'" style="width: 800px;margin-bottom: -10px;">
+					<div id="contentHeaderRight" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'headline', gutters:false" style="width: 100%;">
+						<div id="topPane1" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top'" >
+							<div style="float: right;margin-top: -8px;margin-right: 0px;width: 100%;border: 0px;border-style: solid;color: yellow;">
+								<input id="login" type="text" style="text-align: right;width: 100%;border: 0px;color: white;background-color: #003366;" />
+							</div>
+						</div>
+						<div id="bottomPane1" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom'" >
+						<div style="height: 45px;width: 100%;margin-top: 10px;overflow:hidden;border: 0px;border-style: solid;color: red;">
+							<button id="legend_btn" onClick="legendDialog.show();" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass: 'legendIcon'" type="button" showLabel="false" style="background-color: transparent;">Legend</button>
+							
+							<button id="layerlist_btn" onClick="layerListDialog.show();" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass: 'layerIcon'" type="button" showLabel="false" style="background-color: transparent;">Layers</button>
+							
+							<button id="basemap_btn" onClick="basemapDialog.show();" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass: 'basemapIcon'" type="button" showLabel="false" style="background-color: transparent;">Basemap Toogle</button>
+							
+							<button id="bookmark_btn" onClick="bookmarkDialog.show();" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass: 'bookmarkIcon'" type="button" showLabel="false" style="background-color: transparent;">BookMarker</button>
+
+							<button id="summaryReport_btn" onClick="summaryReportDialog.show();" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass: 'summaryReportIcon'" type="button" showLabel="false" style="margin-left: 20px;background-color: transparent;">Summary Report</button>           			
+							
+							<button id="gravesiteReport_btn" onClick="gravesiteReportDialog.show();" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass: 'gravesiteReportIcon'" type="button" showLabel="false" style="background-color: transparent;">Gravesite Report</button>
+							
+							<button id="mapbookReport_btn" onClick="mapbookReportDialog.show();" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass: 'mapbookReportIcon'" type="button" showLabel="false" style="background-color: transparent;">MapBook Report</button>           									
+							
+							<button id="editor_btn" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass: 'editIcon'" type="button" showLabel="false" style="margin-left: 5px;background-color: transparent;">Editor</button>
+
+							<button id="scheduler_btn" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass: 'schedulerIcon'" type="button" showLabel="false" style="margin-left: 20px;background-color: transparent;">Daily Burial Schedule</button>
+
+							<div id="dropDownButtonContainer" data-dojo-type="dijit/form/DropDownButton" data-dojo-props="iconClass: 'helpIcon'" style="float: right;">
+								<div dojoType="dijit.Menu" id="Edit">
+									<div dojoType="dijit.MenuItem" label="About" onclick="getAbout();"></div>
+									<div dojoType="dijit.MenuItem">
+										<a href="mailto:NCAGIS">Contact Us</a>
+									</div>
+								</div>							
+							</div>							
+						</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="leftPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'left'">
+			<div data-dojo-type="dijit/layout/AccordionContainer" style="height: 250px;margin-top: 5px;">
+				<div data-dojo-type="dijit/layout/ContentPane" id="searchPane" data-dojo-props="title:'Search Site'">
+					<div style="margin-top: 5px;">
+						<label for="select_site_search">Site</label>
+						<select id="select_site_search" style="width: 98%;margin-left: 0px;margin-top:5px;"></select> 
+					</div>
+					<div style="margin-top: 20px;">
+						<label for="select_section_search">Section</label>
+						<select id="select_section_search" style="width: 98%;margin-left: 0px;margin-top:5px;"></select> 
+					</div>
+					<div style="margin-top: 20px;">
+						<label for="select_gravesite_search">Gravesite</label>
+						<select id="select_gravesite_search" style="width: 98%;margin-left: 0px;margin-top:5px;"></select> 
+					</div>
+				</div>
+			</div>
+			<div data-dojo-type="dijit/layout/AccordionContainer" style="height: 350px;margin-top: 20px;">
+				<div data-dojo-type="dijit/layout/ContentPane" id="infoPane" data-dojo-props="title:'Search Interment'">
+					<div style="margin-top: 5px;">
+						<label for="select_site_people">Site</label>
+						<select id="select_site_people" style="width: 98%;margin-left: 0px;margin-top:5px;"></select> 
+					</div>
+
+					<div style="margin-top: 20px;">
+						<label for="lastname_field">Last Name</label>
+						<input type="text" name="lastname" value=""
+							data-dojo-type="dijit/form/TextBox"
+							data-dojo-props="trim:true, propercase:true"
+							id="lastname_field" autocomplete="off" style="width: 98%;margin-left: 0px;margin-top:5px;" />
+					</div>
+					<div style="margin-top: 20px;">
+						<label for="firstname_field">First Name</label>
+						<input type="text" name="firstname" value=""
+							data-dojo-type="dijit/form/TextBox"
+							data-dojo-props="trim:true, propercase:true"
+							id="firstname_field" autocomplete="off" style="width: 98%;margin-left: 0px;margin-top:5px;" />
+					</div>
+					<div style="margin-top: 10px; text-align: center;">
+						<button data-dojo-type="dijit/form/Button" type="button" id="btn_peopleSubmit" >Submit</button>
+					</div>
+					<div>
+						<div style="margin-top: 10px; margin-left: 10px;">
+							<label for="select_gravesite_people" style="display: inline-block;width: 80px;">Gravesite:</label>
+							<select id="select_gravesite_people" style="width: 98%;margin-left: 0px;margin-top:5px;"></select> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="map" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'" style="overflow:hidden;">
+			<div id="HomeButton" style="background-color: white;"></div>
+			<div id="search"></div>
+			
+			<div id="navToolbar" data-dojo-type="dijit/Toolbar">
+				<div style="position:absolute; left:20px; top:135px; z-Index:999;">
+					<button id="btn_previous" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass: 'previousIcon'" type="button" showLabel="false" style="background-color: white;border: 1px;border-style: solid;color: grey;display: none;">Previous extent</button>           			
+				</div>
+				<div style="position:absolute; left:20px; top:164px; z-Index:999;">
+					<button id="btn_next" data-dojo-type="dijit/form/Button" data-dojo-props="iconClass: 'nextIcon'" type="button" showLabel="false" style="background-color: white;border: 1px;border-style: solid;color: grey;display: none;">Next extent</button>           			
+				</div>
+			</div>
+			
+			<div style="position:absolute; right:20px; top:20px; z-Index:999;">
+				<div id="titlePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Measurement', closable:false,  open:false">
+					<div id="measurementDiv"></div>
+				</div>
+			</div>
+			
+			<div data-dojo-type="dijit/Dialog" data-dojo-id="legendDialog" title="Legend">
+				<div id="legendDiv"></div>
+			</div>
+			
+			<div data-dojo-type="dijit/Dialog" data-dojo-id="layerListDialog" title="Layer List">
+				<div id="layerListDiv"></div>
+			</div>
+			<div data-dojo-type="dijit/Dialog" data-dojo-id="bookmarkDialog" title="Book Marker">
+				<div id="bookmarkDiv"></div>
+			</div>
+			<div data-dojo-type="dijit/Dialog" data-dojo-id="basemapDialog" title="Basemap Toogle">
+				<div id="basemapGalleryDiv"></div>
+			</div>
+			
+			<div data-dojo-type="dijit/Dialog" data-dojo-id="summaryReportDialog" title="Site Summary Report">
+				<div id="summaryReportDiv" >
+					<div style="margin: 10px;">
+						<label for="select_site_summary" style="margin-right: 5px;">Site:</label>
+						<select id="select_site_summary" style="width: 320px;margin-left: 0px;margin-top:5px;"></select> 
+					</div>
+					<div style="margin-top: 25px;margin-left: 170px;">
+						<button id="btn_summaryReport" data-dojo-type="dijit/form/Button" type="button">Submit</button>
+					</div>
+					<div id="loading_summaryReport" style="margin-top: 10px;margin-left: 120px;">
+					</div>
+				</div>
+			</div>
+			<div data-dojo-type="dijit/Dialog" data-dojo-id="summaryReportResultDialog" title="Site Summary Report" style="overflow: hidden;">
+				<div id="summaryReportResultDiv"></div>
+			</div>
+
+			<div data-dojo-type="dijit/Dialog" data-dojo-id="identifyResultDialog" title="Identify Results" style="overflow: hidden;">
+				<div id="identifyResultDiv"></div>
+			</div>
+			
+			<div data-dojo-type="dijit/Dialog" data-dojo-id="gravesiteReportDialog" title="Gravesite Report">
+				<div id="gravesiteReportDiv">
+					<div style="margin: 10px;">
+						<label for="select_site_report" style="margin-right: 5px;width: 70px;display: inline-block;">Site:</label>
+						<select id="select_site_report" style="width: 300px;margin-left: 0px;margin-top:5px;"></select> 
+					</div>
+					<div style="margin: 10px;">
+						<label for="select_section_report" style="margin-right: 5px;width: 70px;display: inline-block;">Section:</label>
+						<select id="select_section_report" style="width: 300px;margin-left: 0px;margin-top:5px;"></select> 
+					</div>
+					<div style="margin: 10px">
+						<label for="select_gravesite_report" style="margin-right: 5px;width: 70px;display: inline-block;">Gravesite:</label>
+						<select id="select_gravesite_report" style="width: 300px;margin-left: 0px;margin-top:5px;"></select> 
+					</div>
+					<div style="margin-top: 15px;margin-left: 130px;">
+						<button id="btn_gravesiteReport" data-dojo-type="dijit/form/Button" type="button" style="margin-left: 70px;">Submit</button>
+					</div>
+					<div id="loading_gravesiteReport" style="margin-top: 5px;margin-left: 120px;">
+					</div>
+				</div>
+			</div>
+			
+			<div data-dojo-type="dijit/Dialog" data-dojo-id="mapbookReportDialog" title="MapBook for Gravesite Report">
+				<div id="mapbookReportDiv">
+					<div style="margin: 10px;">
+						<label for="select_site_mapbook" style="margin-right: 5px;width: 70px;display: inline-block;">Site:</label>
+						<select id="select_site_mapbook" style="width: 300px;margin-left: 0px;margin-top:5px;"></select> 
+					</div>
+					<div style="margin: 10px;">
+						<label for="select_section_mapbook" style="margin-right: 5px;width: 70px;display: inline-block;">Section:</label>
+						<select id="select_section_mapbook" style="width: 300px;margin-left: 0px;margin-top:5px;"></select> 
+					</div>
+					<div style="margin: 10px;">
+						<label for="email_id" style="margin-right: 5px;width: 70px;display: inline-block;">Email:</label>
+						<input type="text" value="" id="email_id" style="width: 300px;margin-left: 0px;margin-top:5px;" />
+					</div>
+					
+					<div style="margin-top: 15px;margin-left: 130px;">
+						<button id="btn_mapbookReport" data-dojo-type="dijit/form/Button" type="button" style="margin-left: 70px;">Submit</button>
+					</div>
+					<div id="mapbookReport_result" style="margin-top: 10px;margin-left: 15px;">
+						<p><font color="blue" size="3">
+						Note: Reports can take 30 minutes or more to be generated.<br>
+						An email with a download link will be sent when<br>
+						the Mapbook report is ready.
+						</font></p>
+					</div>
+				</div>
+			</div>
+
+			<div data-dojo-type="dijit/Dialog" data-dojo-id="editorDialog" title="Editor for Gravesite_Poly Data">
+				<div id="editorDiv">
+					<div style="border: 1px;border-style: solid;color: #003366;">
+						<div style="margin: 10px;">
+							<label for="select_site_editor" style="margin-right: 5px;width: 70px;display: inline-block;">Site:</label>
+							<select id="select_site_editor" style="width: 300px;margin-left: 0px;margin-top:5px;"></select> 
+						</div>
+						<div style="margin: 10px;">
+							<label for="select_section_editor" style="margin-right: 5px;width: 70px;display: inline-block;">Section:</label>
+							<select id="select_section_editor" style="width: 300px;margin-left: 0px;margin-top:5px;"></select> 
+						</div>
+						<div style="margin: 10px;">
+							<label for="select_gravesite_editor" style="margin-right: 5px;width: 70px;display: inline-block;">Gravesite:</label>
+							<select id="select_gravesite_editor" style="width: 300px;margin-left: 0px;margin-top:5px;"></select> 
+						</div>
+					</div>
+					
+					<div style="margin-top: 10px;border: 1px;border-style: solid;color: blue;height: 130px;">
+						<div style="margin: 10px;">
+							<label for="input_gravesite_poly_objectid" style="color: blue;margin-right: 5px;width: 115px;display: inline-block;">OBJECTID:</label>
+							<input type="text" value="" id="input_gravesite_poly_objectid" style="width: 248px;margin-left: 0px;margin-top:5px;" disabled />
+						</div>
+						<div style="margin-top: 5px;margin-left: 10px;">
+							<label for="select_gravesiteStatus" style="color: blue;margin-right: 5px;width: 115px;display: inline-block;">Gravesite Status:</label>
+							<select id="select_gravesiteStatus" style="width: 250px;margin-left: 0px;margin-top:5px;"></select> 
+						</div>
+						<div style="margin-top: 15px;margin-left: 160px;">
+							<button id="btn_editor_submit" data-dojo-type="dijit/form/Button" type="button" style="margin-left: 70px;">Submit</button>
+							<label for="btn_editor_submit" style="color: green;margin-right: 5px;width: 115px;display: inline-block;font-size: 12px;"></label>
+
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			
+			<div data-dojo-type="dijit/Dialog" data-dojo-id="schedulerDialog" title="Daily Burial Schedule" style="width:800px; height:550px; overflow:hidden;">
+				<div id="scheduler" style="width:800px; height:550px; overflow: auto;">
+					<iframe src="" id="schedule_iframe"></iframe>
+				</div>
+			</div>
+			
+		</div>
+		
+ 	</div>
+</body>
+</html>
