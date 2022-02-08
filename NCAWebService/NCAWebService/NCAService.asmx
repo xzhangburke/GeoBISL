@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" CodeBehind="NCAService.asmx.cs" Class="NCAWebService.ncaWebService" %>

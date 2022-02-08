@@ -1,0 +1,6 @@
+D:\Applications\NCA_WebService\NCAWebService\NCAWebService\bin\NCAWebService.dll.config
+D:\Applications\NCA_WebService\NCAWebService\NCAWebService\bin\NCAWebService.dll
+D:\Applications\NCA_WebService\NCAWebService\NCAWebService\bin\NCAWebService.pdb
+D:\Applications\NCA_WebService\NCAWebService\NCAWebService\obj\Debug\NCAWebService.csprojResolveAssemblyReference.cache
+D:\Applications\NCA_WebService\NCAWebService\NCAWebService\obj\Debug\NCAWebService.dll
+D:\Applications\NCA_WebService\NCAWebService\NCAWebService\obj\Debug\NCAWebService.pdb
